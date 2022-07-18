@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+// Back Office
 Route::middleware('auth')
 ->namespace('Admin') //tutti i controller saranno dentro al namespace Admin
 ->name('admin.') //nome della rotta
@@ -28,6 +28,7 @@ Route::middleware('auth')
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
+// Front Office
 Route::any('{any?}', function() {
     return view('guest.home');
 })->where('any', '.*');
