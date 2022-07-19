@@ -38,6 +38,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // validazione dati
+        $request->validate([
+            'title' => 'required | string | max:255',
+            'content' => 'required | string | max:65000',
+            'published' => 'sometimes | accepted'
+        ]);
         // prendo i dati request e creo il post
         $data = $request->all();
         $newPost = new Post();
