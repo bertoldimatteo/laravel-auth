@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -35,7 +36,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validazione dati
+        // prendo i dati request e creo il post
+        $data = $request->all();
+        $newPost = new Post();
+        $newPost->fill($data);
+        // reinidirizzo a un altra pagina
     }
 
     /**
