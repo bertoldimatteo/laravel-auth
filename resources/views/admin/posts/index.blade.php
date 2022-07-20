@@ -7,6 +7,9 @@
             <h1>Lista posts</h1>
         </div>
         <div class="card-body">
+            <div class="mb-3">
+                <a href="{{route('admin.posts.create')}}" class="btn btn-info">Crea nuovo post</a>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -32,7 +35,9 @@
                                 <span class="badge bg-warning text-dark">Not Published</span>
                                 @endif
                             </td>
-                            <td>azioni per dopo</td>
+                            <td>
+                                <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">Visualizza</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
