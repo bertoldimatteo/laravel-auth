@@ -86,9 +86,28 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        // validazione
+        $request->validate([
+            'title' => 'required | string | max:255',
+            'content' => 'required | string | max:65000',
+            'published' => 'sometimes | accepted'
+        ]);
+        // aggiornamento
+        $data = $request->all(); // prendo tutti i dati
+        // se cambia il titolo genero il nuovo slug
+        if( $post->title != $data['title']) {
+            $post->slug = $this->getSlug($data['title']);
+        }
+        //prima va sempre il fill
+        $post->fill($data);  //aggiorno il post con i dati nuovi
+
+        $post->published = isset($post->published);
+
+        $post->save();
+        // return
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**

@@ -7,8 +7,9 @@
                 <h1>Modifica: {{$post->title}}</h1>
             </div>
             <div class="card-body">
-                <form action="{{route('admin.posts.store')}}" method="POST">
+                <form action="{{route('admin.posts.update', $post->id)}}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="title">Titolo</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{old('title' , $post->title)}}">
@@ -30,7 +31,7 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Crea</button>
+                    <button type="submit" class="btn btn-primary">Aggiorna</button>
                   </form>
             </div>
         </div>
