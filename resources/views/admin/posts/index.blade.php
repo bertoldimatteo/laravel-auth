@@ -36,7 +36,10 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">Visualizza</a>
+                                <div>
+                                    <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">View</a>
+                                    <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning">Edit</a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
