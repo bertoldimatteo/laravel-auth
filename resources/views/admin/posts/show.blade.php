@@ -7,7 +7,12 @@
                 <h1>{{$post->title}}</h1>
             </div>
             <div class="card-body">
-                {{$post->content}}
+                <div class="mb-3">
+                    <a href="{{route('admin.posts.index')}}" class="btn btn-info">Tutti i Posts</a>
+                </div>
+                <div>
+                    {{$post->content}}
+                </div>    
             </div>
         </div>        
     </div>    
